@@ -72,8 +72,9 @@ if(Humanpoint > machinepoint)
 {
     console.log(`You win with ${Humanpoint} - ${machinepoint}`);
 }
-else {
+else if(machinepoint > Humanpoint) {
     console.log(`You lose ${machinepoint} - ${Humanpoint}!`);
 }
+else console.log("It's draw");
 
 //check result
