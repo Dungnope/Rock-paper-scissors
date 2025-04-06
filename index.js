@@ -1,9 +1,14 @@
-// plan
+const rock_choice = document.querySelector("#Rock");
+const paper_choice = document.querySelector("#Paper");
+const scissors_choice = document.querySelector("#Scissors");
+const display = document.querySelector("#result");
+let humanPoint = 0;
+let machinePoint = 0;
+let humanChoice;
+let botChoice;
+//check result
 
-//Create bot function random rock, paper, scissors
-
-
-const ComputerChoice = function getComputerChoice()
+function getComputerChoice()
 {
 let randomchoice = Math.floor(Math.random() * 3) + 1;
 
@@ -18,63 +23,103 @@ let randomchoice = Math.floor(Math.random() * 3) + 1;
     }
 };
 
-//Create youHur choice
-
-const Humanchoice = () => {
-    let choose = prompt("Rock, Paper, Scissors: ");
-    let ans = choose.toLowerCase();
-    let first = ans.at(0);
-    first = first.toUpperCase();
-    ans = ans.replace(ans.at(0), first);
-    return ans;
-};
-let Humanpoint = 0, machinepoint = 0;
-
-//Play round
-
-function Play_round(computer, human)
+function Play_round(human, computer)
 {
-    if(computer == human)
+    if(computer === human)
     {
-        console.log("It's draw");
+        let drawAttention = document.createElement("p");
+        drawAttention.textContent = "It's a draw";
+        display.append(drawAttention);
     }
-    else if(computer == `Rock` && human == `Paper`)
+    else if(computer === `Rock` && human === `Paper`)
     {
-        console.log("You win!");
-        ++Humanpoint;
+        ++humanPoint;
     }
-    else if(computer == `Paper` && human == `Scissors`)
+    else if(computer === `Paper` && human === `Scissors`)
     {
-        console.log("You win!");
-        ++Humanpoint;
+        ++humanPoint;
     }
-    else if(computer == `Scissors`&& human == `Rock`)
+    else if(computer === `Scissors`&& human === `Rock`)
     {
-        console.log("You win!");
-        ++Humanpoint;
+        ++humanPoint;
     }
 
     else 
     {
-        console.log(`You lose, ${computer} beats ${human}`);
-        ++machinepoint;
+        ++machinePoint;
     }
 }
+    rock_choice.addEventListener('click', () => {
+        humanChoice = rock_choice.id;
+        botChoice = getComputerChoice();
+        display.textContent = `Your choice: ${humanChoice} - Bot choice: ${botChoice}`;
+        Play_round(humanChoice, botChoice);
+        const scoreBoard = document.createElement("p");
+        scoreBoard.textContent = `Your score: ${humanPoint} - Bot score: ${machinePoint}`;
+        display.appendChild(scoreBoard);
+        if(humanPoint == 5 || machinePoint == 5)
+        {
+            if(humanPoint > machinePoint)
+            {
+                display.textContent = `You win! ${humanPoint} - ${machinePoint}`;
+                humanPoint = 0;
+                machinePoint = 0;
+            }
+            else
+            {
+                display.textContent = `Computer win, you lose!`;
+                humanPoint = 0;
+                machinePoint = 0;
+            }
+        }
+    })
 
-//create number time to play
-let times = prompt("Your times want to play: ")
-for(let i = 0; i < times; i++)
-{
-    Play_round(ComputerChoice(), Humanchoice());
-}
+    paper_choice.addEventListener('click', () => {
+        humanChoice = paper_choice.id;
+        botChoice = getComputerChoice();
+        display.textContent = `Your choice: ${humanChoice} - Bot choice: ${botChoice}`;
+        Play_round(humanChoice, botChoice);
+        const scoreBoard = document.createElement("p");
+        scoreBoard.textContent = `Your score: ${humanPoint} - Bot score: ${machinePoint}`;
+        display.appendChild(scoreBoard);
+        if(humanPoint == 5 || machinePoint == 5)
+            {
+                if(humanPoint > machinePoint)
+                {
+                    display.textContent = `You win! ${humanPoint} - ${machinePoint}`;
+                    humanPoint = 0;
+                    machinePoint = 0;
+                }
+                else
+                {
+                    display.textContent = `Computer win, you lose!`;
+                    humanPoint = 0;
+                    machinePoint = 0;
+                }
+            }
+    })
 
-if(Humanpoint > machinepoint)
-{
-    console.log(`You win with ${Humanpoint} - ${machinepoint}`);
-}
-else if(machinepoint > Humanpoint) {
-    console.log(`You lose ${machinepoint} - ${Humanpoint}!`);
-}
-else console.log("It's draw");
-
-//check result
+    scissors_choice.addEventListener('click', () => {
+        humanChoice = scissors_choice.id;
+        botChoice = getComputerChoice();
+        display.textContent = `Your choice: ${humanChoice} - Bot choice: ${botChoice}`;
+        Play_round(humanChoice, botChoice);
+        const scoreBoard = document.createElement("p");
+        scoreBoard.textContent = `Your score: ${humanPoint} - Bot score: ${machinePoint}`;
+        display.appendChild(scoreBoard);
+        if(humanPoint == 5 || machinePoint == 5)
+            {
+                if(humanPoint > machinePoint)
+                {
+                    display.textContent = `You win! ${humanPoint} - ${machinePoint}`;
+                    humanPoint = 0;
+                    machinePoint = 0;
+                }
+                else
+                {
+                    display.textContent = `Computer win, you lose!`;
+                    humanPoint = 0;
+                    machinePoint = 0;
+                }
+            }
+    });
