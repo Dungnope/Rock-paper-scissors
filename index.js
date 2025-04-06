@@ -67,7 +67,7 @@ function Play_round(human, computer)
             }
             else
             {
-                display.textContent = `Computer win, you lose!`;
+                display.textContent = `Computer win, you lose! ${humanPoint} - ${machinePoint}`;
                 humanPoint = 0;
                 machinePoint = 0;
             }
@@ -92,7 +92,7 @@ function Play_round(human, computer)
                 }
                 else
                 {
-                    display.textContent = `Computer win, you lose!`;
+                    display.textContent = `Computer win, you lose! ${humanPoint} - ${machinePoint}`;
                     humanPoint = 0;
                     machinePoint = 0;
                 }
@@ -117,7 +117,7 @@ function Play_round(human, computer)
                 }
                 else
                 {
-                    display.textContent = `Computer win, you lose!`;
+                    display.textContent = `Computer win, you lose! ${humanPoint} - ${machinePoint}`;
                     humanPoint = 0;
                     machinePoint = 0;
                 }
